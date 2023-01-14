@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Time calculator</title>
+  <link rel="stylesheet" href="tidsräknare.css">
+  <link rel="icon" type="image/png" href="klocka.png"/>
+</head>
+<body>
+
+  <div id="container">
+
+    <form>
+
+      Time: <input type="time" id="timeInput"> <br><br>
+
+
+      <input type="number" id="hoursInput" value="1" min="-24" max="24" step="1">
+
+      <br><br>
+      <input type="button" value="Add Hours" onclick="addHour()">
+<input type="button" value="Subtract Hours" onclick="subtractHour()">
+</form> 
+
+<p>New Time: <span id="newTime"></span></p>
+
+<script>
+function addHour() {
+  var time = document.getElementById("timeInput").value;
+  var hours = document.getElementById("hoursInput").value;
+  var newTime = new Date("1970-01-01T" + time);
+  newTime.setHours(newTime.getHours() + parseInt(hours));
+  document.getElementById("newTime").innerHTML = newTime.toLocaleTimeString();
+  document.getElementById("timeInput").value = newTime.toLocaleTimeString();
+}
+
+function subtractHour() {
+  var time = document.getElementById("timeInput").value;
+  var hours = document.getElementById("hoursInput").value;
+  var newTime = new Date("1970-01-01T" + time);
+  newTime.setHours(newTime.getHours() - parseInt(hours));
+  document.getElementById("newTime").innerHTML = newTime.toLocaleTimeString();
+  document.getElementById("timeInput").value = newTime.toLocaleTimeString();
+}
+</script>
+  </div>
+
+</body>
+</html>
